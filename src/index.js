@@ -1,10 +1,10 @@
 import './styles.css';
 import { refs } from './refs/refs';
-import { signUp, signIn, logOut } from './api/api';
-import { state } from './data/data';
+import { logOut } from './api/api';
 import { createSignUpForm } from './components/auth/forms/signUpForm';
 import { createSignInForm } from './components/auth/forms/signInForm';
 import { createHome } from './components/pages/home';
+import { createUsersList } from './components/users/usersList/usersList';
 createHome();
 
 const getPage = e => {
@@ -24,17 +24,13 @@ const getPage = e => {
     case 'logOut':
       createHome();
       break;
+    case 'users':
+      createUsersList();
+      break;
     default:
       createHome();
       break;
   }
-
-  // if (e.target.dataset.page === 'signUp') {
-  //   createSignUpForm();
-  // }
-  // if (e.target.dataset.page === 'signIn') {
-  //   createSignInForm();
-  // }
 };
 
 const logOutHandler = () => {
@@ -48,7 +44,11 @@ const logOutHandler = () => {
   refs.navigation
     .querySelector('[data-page="logOut"]')
     .classList.toggle('hidden');
+  refs.navigation
+    .querySelector('[data-page="users"]')
+    .classList.toggle('hidden');
 };
+
 refs.navigation.addEventListener('click', getPage);
 refs.navigation
   .querySelector('[data-page="logOut"]')

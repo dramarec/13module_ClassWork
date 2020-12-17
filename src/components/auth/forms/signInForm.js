@@ -16,14 +16,14 @@ export const createSignInForm = () => {
   <form name="signInForm">
     <input type="text" name="email" />
     <input type="text" name="password" />
-    <span class="errorIn"></span>
+    <span class="error"></span>
     <button type="submit">SignIn</button>
   </form>`;
   refs.signInForm = document.forms.signInForm;
   const getUserData = e => {
     if (state.error) {
       document.querySelector('.error').textContent = '';
-      refs.errorIn.textContent = '';
+      // refs.error.textContent = '';
       state.error = '';
     }
     const { name, value } = e.target;
@@ -42,6 +42,9 @@ export const createSignInForm = () => {
           .classList.toggle('hidden');
         refs.navigation
           .querySelector('[data-page="logOut"]')
+          .classList.toggle('hidden');
+        refs.navigation
+          .querySelector('[data-page="users"]')
           .classList.toggle('hidden');
       });
   };

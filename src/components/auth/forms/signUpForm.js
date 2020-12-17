@@ -23,7 +23,7 @@ export const createSignUpForm = () => {
   const getUserData = e => {
     if (state.error) {
       document.querySelector('.error').textContent = '';
-      refs.errorIn.textContent = '';
+      // refs.errorIn.textContent = '';
       state.error = '';
     }
     const { name, value } = e.target;
